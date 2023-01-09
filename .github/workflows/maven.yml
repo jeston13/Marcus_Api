@@ -17,7 +17,7 @@ on:
 jobs:
   build:
 
-    runs-on: adoptopenjdk/maven-openjdk11
+    runs-on: ubuntu_latest
 
     steps:
     - uses: actions/checkout@v3
