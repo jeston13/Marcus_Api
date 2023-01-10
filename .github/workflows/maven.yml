@@ -32,7 +32,7 @@ jobs:
       run: mvn clean verify
       
     - name: Test Report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       if: success() || failure()
       with:
           name: Serenity Report    # Name of the check run which will be created
