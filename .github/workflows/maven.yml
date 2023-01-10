@@ -35,8 +35,8 @@ jobs:
       uses: actions/upload-artifact@v3
       if: success() || failure()
       with:
-          name: Serenity Report    # Name of the check run which will be created
-          path: target/site/serenity/index.html         # Path to test results
+          name: Serenity Report               # Name of the folder
+          path: target/site/serenity/         # Path to test results
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
