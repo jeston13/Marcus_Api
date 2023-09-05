@@ -28,15 +28,20 @@ public class EmployeesTest {
 //	}
 
 	@Test
-	@Title("Create User")
+	@Title("Place Order")
 	public void createValidUser() {
-
-		employeeSteps.createUser();
+		employeeSteps.placeOrder(5,0,0,"2023-09-05T08:46:06.081+0000", "placed", true);
 		employeeSteps.verifyStatusCode(200);
-//		employeeSteps.verifyName("Shawn Test");
-//		employeeSteps.verifyAge(30);
-//		employeeSteps.verifySalary(11111);
-//		employeeSteps.verifyMessage("Successfully! Record has been added.");
+		employeeSteps.verifyId(5);
 
 	}
+
+	@Test
+	@Title("Purchase by id")
+	public void purchasePetById() {
+		employeeSteps.purchaseOrder();
+		employeeSteps.verifyStatusCode(200);
+		employeeSteps.verifyId();
+	}
+
 }
