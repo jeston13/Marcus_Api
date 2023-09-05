@@ -3,6 +3,7 @@ package org.example.SerenityWithRestAssuredDemo.steps;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
@@ -10,28 +11,35 @@ import net.thucydides.core.annotations.Step;
 
 public class EmployeeSteps {
 
-	private static final String URL = "http://dummy.restapiexample.com/api/v1";
+	private static final String URL = "https://petstore.swagger.io/v2";
 	public Response response;
 
-	@Step("Search user by id {0}")
-	public void sendUser(int id) {
-		response = SerenityRest.given().contentType("application/json").header("Content-Type", "application/json")
-				.when().get(URL + "/employee/" + id);
-
-	}
+//	@Step("Search user by id {0}")
+//	public void sendUser(int id) {
+//		response = SerenityRest.given().contentType("application/json").header("Content-Type", "application/json")
+//				.when().get(URL + "/employee/" + id);
+//
+//	}
 
 	@Step("Create a new user")
 	public void createUser() {
 
+		JSONArray jsonArray = new JSONArray();
 		JSONObject data = new JSONObject();
 
-		data.put("employee_name", "Shawn Test");
-		data.put("profile_image", "test.png");
-		data.put("employee_age", 30);
-		data.put("employee_salary", 11111);
+		data.put("id",0);
+		data.put("username", "123");
+		data.put("firstName", "xyz");
+		data.put("lastName", "abc");
+		data.put("email", "ab@c.vom");
+		data.put("password", "qwerty");
+		data.put("phone", "1234567890");
+		data.put("userStatus", 0);
+
+		jsonArray.put(data);
 
 		response = SerenityRest.given().contentType("application/json").header("Content-Type", "application/json")
-				.body(data.toString()).when().post(URL + "/create");
+				.body(jsonArray.toString()).when().post(URL + "/user/createWithArray");
 
 	}
 
